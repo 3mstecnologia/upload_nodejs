@@ -1,0 +1,32 @@
+{
+  "name": "upload_nodejs",
+  "version": "1.0.0",
+  "description": "Sistema para fazer upload local de arquivos com nodejs",
+  "main": "src/serverupload.js",
+  "scripts": {
+    "dev": "nodemon src/serverupload.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3mstecnologia/upload_nodejs.git"
+  },
+  "keywords": [
+    "UPLOAD",
+    "NODEJS",
+    "EXPRESS",
+    "LOCAL"
+  ],
+  "author": "Matheus Schmitt +55 49 991108888",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3mstecnologia/upload_nodejs/issues"
+  },
+  "homepage": "https://github.com/3mstecnologia/upload_nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "multer": "^1.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
