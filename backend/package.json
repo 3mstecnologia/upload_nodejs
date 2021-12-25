@@ -2,9 +2,9 @@
   "name": "upload_nodejs",
   "version": "1.0.0",
   "description": "Sistema para fazer upload local de arquivos com nodejs",
-  "main": "src/serverupload.js",
+  "main": "src/server_emaj.js",
   "scripts": {
-    "dev": "nodemon src/serverupload.js"
+    "dev": "nodemon src/server_emaj.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,13 @@
   },
   "homepage": "https://github.com/3mstecnologia/upload_nodejs#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.2",
-    "multer": "^1.4.4"
+    "jsonwebtoken": "^8.5.1",
+    "mssql": "^7.3.0",
+    "multer": "^1.4.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
