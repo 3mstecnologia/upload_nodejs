@@ -2,6 +2,7 @@ import Router from 'next/router';
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 import { setCookie, parseCookies } from "nookies";
+import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 
 export const AuthContext = createContext({})
 
@@ -27,17 +28,19 @@ export function AuthProvider({ children }) {
   
    async function signIn({ cpf, passwordEnviado }) {
     console.log("Entrada do func Sign",cpf, passwordEnviado);
-    const {data:{token, user}} = await axios.post("http://10.88.1.219:3001/login", {
+    const {data} = await axios.post("http://10.88.1.219:3001/login", {
       cpf,
       passwordEnviado,
-    }, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    
+    },)
+     if (data.error) {
+       console.log("Erro no login",data.error);
+       return {
+         error: data.error,
+       };
+      }
      
-    if (!token) {
+     
+    if (!!token) {
       Router.push("/login");
       };
     setCookie(undefined, "token", token, {

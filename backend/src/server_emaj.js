@@ -9,9 +9,9 @@ const https = require("https");
 const app = express();
 
 app.all("*", function (req, res, next) {
-  //console.log("req.headers", req.headers);
+  console.log("req.headers", req.headers);
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Credentials", "false");
   res.header("Access-Control-Allow-Methods", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -21,6 +21,7 @@ app.all("*", function (req, res, next) {
   next();
 });
 app.use(cors());
+
 app.use(express.json());
 app.use(routes);
 

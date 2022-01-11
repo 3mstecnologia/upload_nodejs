@@ -26,24 +26,27 @@ module.exports = {
       var hash = crypto
         .pbkdf2Sync(passwordEnviado, userEnviado.salt, 1000, 64, "sha512")
         .toString("hex");
-      console.log(hash);
+      //console.log(hash);
       var user = await dbmysql.query(
         `
             select * from Users where cpf = '${cpf}' and password = '${hash}'
             `,
         { type: dbmysql.QueryTypes.SELECT }
       );
-      console.log("Usuario =", user);
+      if (!user[0]) {
+        console.log("Senha incorreta do novo IF");
+        return res.status(401).send("Login ou Senha Incorretos");
+      }
+
       user = user[0];
       if (hash === user.password) {
         return res.json({
           token: jwt.sign({ user }, "senhadoemajuniplac", { expiresIn: "12h" }),
-          user: {
-            id: user.id,
-            username: user.username,
-            categoria: user.categoria,
-            nome: user.nome,
-          },
+          //user: {
+          //  id: user.id,
+          //  username: user.username,
+          //  categoria: user.categoria,
+          //  nome: user.nome,
         });
       } else {
         return res.status(401).send("Senha incorreta");
